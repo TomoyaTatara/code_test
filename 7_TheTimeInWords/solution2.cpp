@@ -38,13 +38,16 @@ string numToWords(int n) {
                     "nineteen",
                     "twenty",
                     "half"
-                    };
+    };
 
-    if (n<=20) return num[n-1];
-    else if (n==30) return num[20];
-    else {
-        return num[19] + " " + num[n-21];
+    if (n<=20) {
+        return num[n-1];
     }
+    else if (n==30) {
+        return num[20];
+    }
+    
+    return num[19] + " " + num[n-21];
 }
 
 string timeInWords(int h, int m) {
@@ -53,10 +56,10 @@ string timeInWords(int h, int m) {
     if (m==0) {
         return numToWords(h) + " o' clock";
     }
-    else if (m==15||m==30) {
+    if (m==15||m==30) {
         return numToWords(m) + " past " + numToWords(h);
     }
-    else if (m==1) {
+    if (m==1) {
         return numToWords(m) + " minute past " + numToWords(h);
     }
     if (m<=30) {
@@ -68,9 +71,7 @@ string timeInWords(int h, int m) {
     if (m==59) {
             return numToWords(60-m) + " minute to " + numToWords(h+1);
     }
-    else {
-            return numToWords(60-m) + " minutes to " + numToWords(h+1);
-    }   
+    return numToWords(60-m) + " minutes to " + numToWords(h+1);
 }
 
 int main()
